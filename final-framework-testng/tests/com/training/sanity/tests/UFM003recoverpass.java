@@ -2,6 +2,7 @@ package com.training.sanity.tests;
 
 import static org.testng.Assert.assertEquals;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -23,7 +25,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.training.dataproviders.UFM001dataprovider;
+
 import com.training.generics.ScreenShot;
 import com.training.pom.UFM002;
 import com.training.pom.UFM003;
@@ -37,7 +39,6 @@ public class UFM003recoverpass {
 	public WebDriver driver;
 	private String baseUrl;
 	private UFM003 recoverpass;
-	private static UFM001dataprovider readexcel;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	
@@ -63,39 +64,43 @@ public class UFM003recoverpass {
 		// open the browser 
 		driver.get(baseUrl);
 	}*/
-	@AfterMethod
+	@AfterClass
 	public void tearDown() throws Exception {
 	Thread.sleep(1000);
 	driver.quit();}
    
 	@Test (priority=1)
 	public void validLoginTest() throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
 		recoverpass.clickmyaccount();
 		recoverpass.clicklogin();
 		Thread.sleep(3000);
-		recoverpass.sendemail("Kkumar@gmail.com");
-		recoverpass.sendpass("Kumar1234");
+		recoverpass.sendemail("nehad@gmail.com");
+		recoverpass.sendpass("Neha1234");
 		recoverpass.clickloginbtn();
-		recoverpass.capturererrormsg();
+		Thread.sleep(1000);
+		String Expectedtitle =  "Warning: No match for E-Mail Address and/or Password.";
+	    String ActualTitle = recoverpass.getwarningmsg();
+	    Assert.assertEquals(ActualTitle, Expectedtitle);
+	    System.out.println(ActualTitle);
+		
+	}
 					
-	/*@Test(dependsOnMethods= "validLoginTest", alwaysRun=true, priority=2)
-	public void forgotpasswordTest() {*/
+	@Test(priority=2)
+	public void forgotpasswordTest() throws InterruptedException {
 	recoverpass.clickforgotpassword();
-	recoverpass.sendemailid("Kkumar@gmail.cerom");
-	driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);	
+	recoverpass.sendemailid("nehad@gmail.com");
 	recoverpass.clickcontinuebtn();
-	driver.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);	
+	Thread.sleep(1000);
+	String Expectedtitle = "An email with a confirmation link has been sent your email address.";
+    String ActualTitle = recoverpass.confirmationmsg();
+    Assert.assertEquals(ActualTitle, Expectedtitle);
+    System.out.println(ActualTitle);
 	
 	}
-
-
 }
-	
-	/*@Test (dependsOnMethods=("validLoginTest"), priority=2)
-	public void Myaccountpage() {
-	recoverpass.validlogin();
-	recoverpass.editlink();}*/
+
+
 	
 
 

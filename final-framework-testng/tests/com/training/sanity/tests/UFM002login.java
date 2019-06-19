@@ -1,5 +1,7 @@
 package com.training.sanity.tests;
 
+import static org.testng.Assert.assertTrue;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -7,6 +9,8 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -49,7 +53,7 @@ public class UFM002login {
 		driver.get(baseUrl);
 	}*/
 	
-	@AfterMethod
+	@AfterClass
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
 		driver.quit();
@@ -62,6 +66,20 @@ public class UFM002login {
 		uniformpom.sendemail("ritu123@gmail.com");
 		uniformpom.sendpassword("ritu123");
 		uniformpom.clickloginbtn();
-		
+		Assert.assertTrue(true, "My Account");
+		System.out.println("Test 1 Passed");
 			}
+	@Test(dependsOnMethods= "validLoginTest")
+	public void myaccountpage() {
+		uniformpom.myaccountpage();
+		assertTrue(driver.getTitle().contains("My Account"));
+		System.out.println("Test 2 Passed");
+	}
+	
+	@Test(dependsOnMethods= "myaccountpage")
+	public void editinformation() {
+		uniformpom.clickeditinfo();
+		System.out.println("Test 3 Passed");
+	}
 }
+

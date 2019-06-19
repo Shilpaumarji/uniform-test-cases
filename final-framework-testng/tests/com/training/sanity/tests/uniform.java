@@ -10,6 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -52,7 +53,12 @@ public class uniform {
 		driver.get(baseUrl);
 	}*/
 	
-	@AfterMethod
+	/*@AfterMethod
+	public void tearDown() throws Exception {
+		Thread.sleep(1000);
+		driver.quit();
+	}*/
+	@AfterClass
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
 		driver.quit();
@@ -62,26 +68,22 @@ public class uniform {
 		Thread.sleep(1000);
 		uniformpom.clickmyaccount();
 		uniformpom.clickregister();
-		uniformpom.sendfirstName("rima");
-		uniformpom.sendlastname("B");
-		uniformpom.sendemail("rima12@gmail.com");
+		uniformpom.sendfirstName("rimaf");
+		uniformpom.sendlastname("f");
+		uniformpom.sendemail("rimaf12@gmail.com");
 		uniformpom.sendtelephone("9441835892");
 		uniformpom.sendaddress1("Jayanagar");
 		uniformpom.sendcity("Bangalore");
 		uniformpom.sendpostcode("560082");
 		uniformpom.sendcountryid("India");
 		uniformpom.sendzoneid("Karnataka");
-		uniformpom.sendinputpass("rima123");
-		uniformpom.sendconfirmpass("rimal123");
-	    /*js.executeScript("window.scrollBy(0,1000)");*/
+		uniformpom.sendinputpass("rimaf123");
+		uniformpom.sendconfirmpass("rimaf123");
+	   /* js.executeScript("window.scrollBy(0,1000)");*/
 		uniformpom.selectradiono();
-		
 		uniformpom.selectcheckbox();
-		
 		uniformpom.clickcontinue();
 		Thread.sleep(1000);
-		
-		//screenShot.captureScreenShot("First");
 		String Expectedtitle = "Your Account Has Been Created!";
 	    String ActualTitle = driver.getTitle();
 	    Assert.assertEquals(ActualTitle, Expectedtitle);
@@ -89,10 +91,11 @@ public class uniform {
 		
 		
 	}
-	/*@Test(dependsOnMethods= ("validLoginTest"), priority=2)
-	public void registrationpass() {
-	uniformpom.registered("myaccounttitle");
-	System.out.println("My account page displayed");	
-	}*/
+	@Test(dependsOnMethods= "validLoginTest")
+	public void registrationpass() throws InterruptedException {
+		Thread.sleep(1000);
+    uniformpom.clickcontinueacc();
+	System.out.println("Account created successfully");	
+	}
 	
 }
