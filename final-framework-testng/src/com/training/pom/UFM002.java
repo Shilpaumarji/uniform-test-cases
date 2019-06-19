@@ -30,6 +30,12 @@ public class UFM002 {
 	@FindBy(xpath="//*[@id=\"content\"]/div/div[2]/div/form/input")
 	private WebElement loginbtn;
 	
+	@FindBy(xpath="//*[@id=\"content\"]/h1")
+	private WebElement pagetitle;
+	
+	@FindBy(xpath="//*[@id=\"content\"]/ul[2]/li[1]/a")
+	private WebElement editlink;
+	
 	public void clickmyaccount() {
 		this.Myaccount.click(); }
 	
@@ -44,4 +50,10 @@ public class UFM002 {
     
     public void clickloginbtn(){
 		this.loginbtn.click();}
+    public void myaccountpage() {
+    	this.pagetitle.getText();}
+    public void clickeditinfo(){
+		this.editlink.click();}
+    
+    
 }

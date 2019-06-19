@@ -64,8 +64,8 @@ public class uniformlogin {
 	@FindBy(xpath="//*[@id=\"content\"]/form/div/div/input[2]")
 	private WebElement continuebtn;
 	
-	@FindBy(xpath="//*[@id=\"content\"]/h1")
-	private WebElement registered;
+	@FindBy(xpath="//*[@id=\"content\"]/div/div/a")
+	private WebElement continueacc;
 		
 	public void clickmyaccount() {
 		this.Myaccount.click();
@@ -114,10 +114,9 @@ public class uniformlogin {
 		this.checkbox.click();}
 	public void clickcontinue() {
 		this.continuebtn.click();}
-	public void accountcreated() {
-		this.registered.getText();
+	public void clickcontinueacc() {
+		this.continueacc.click();
 	}
-
 	   
 }
 
