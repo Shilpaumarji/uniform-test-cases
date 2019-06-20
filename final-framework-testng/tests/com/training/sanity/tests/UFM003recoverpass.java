@@ -1,36 +1,15 @@
 package com.training.sanity.tests;
 
-import static org.testng.Assert.assertEquals;
-
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-
 import com.training.generics.ScreenShot;
-import com.training.pom.UFM002;
 import com.training.pom.UFM003;
-import com.training.pom.uniformlogin;
-import com.training.readexcel.ApachePOIExcelRead;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
