@@ -13,7 +13,7 @@ import com.training.pom.UFM003;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class UFM003recoverpass {
+public class UFM031invalidlogin {
 
 	public WebDriver driver;
 	private String baseUrl;
@@ -54,8 +54,8 @@ public class UFM003recoverpass {
 		recoverpass.clickmyaccount();
 		recoverpass.clicklogin();
 		Thread.sleep(3000);
-		recoverpass.sendemail("reema@gmail.com");
-		recoverpass.sendpass("reema123");
+		recoverpass.sendemail("nehad@gmail.com");
+		recoverpass.sendpass("Neha1234");
 		recoverpass.clickloginbtn();
 		Thread.sleep(1000);
 		String Expectedtitle =  "Warning: No match for E-Mail Address and/or Password.";
