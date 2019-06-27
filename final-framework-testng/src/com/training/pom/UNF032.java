@@ -37,7 +37,7 @@ public class UNF032 {
 	@FindBy(xpath="//*[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']")
 	private WebElement popupwindow;
 	
-	@FindBy(xpath="//*[@id='cart']//child::td[2]//a[1]")
+	@FindBy(xpath="//*[@id='cart']//child::td[2]/a")
 	private WebElement getinfo;
 	@FindBy(xpath="//*[@id='cart']//child::a[2]//strong")
 	private WebElement checkout;

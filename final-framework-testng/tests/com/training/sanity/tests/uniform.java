@@ -3,17 +3,13 @@ package com.training.sanity.tests;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
@@ -79,10 +75,9 @@ public class uniform {
 		uniformpom.sendzoneid("Karnataka");
 		uniformpom.sendinputpass("rimaf123");
 		uniformpom.sendconfirmpass("rimaf123");
-	   /* js.executeScript("window.scrollBy(0,1000)");*/
-		uniformpom.selectradiono();
+	    uniformpom.selectradiono();
 		uniformpom.selectcheckbox();
-		uniformpom.clickcontinue();
+		uniformpom.clickcontinue1();
 		Thread.sleep(1000);
 		String Expectedtitle = "Your Account Has Been Created!";
 	    String ActualTitle = driver.getTitle();
