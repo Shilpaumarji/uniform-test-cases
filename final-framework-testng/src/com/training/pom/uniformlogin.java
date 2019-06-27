@@ -22,37 +22,37 @@ public class uniformlogin {
 	@FindBy(xpath="//*[@id=\"top-links1\"]/ul/li[3]/ul/li[1]/a")
 	private WebElement register;
 	
-	@FindBy(id="input-firstname")
+	@FindBy(id="input-payment-firstname")
 	private WebElement firstname;
 	
-	@FindBy(id="input-lastname")
+	@FindBy(id="input-payment-lastname")
 	private WebElement lastname;
 	
-	@FindBy(id="input-email")
+	@FindBy(id="input-payment-email")
 	private WebElement email;
 	
-	@FindBy(id="input-telephone")
+	@FindBy(id="input-payment-telephone")
 	private WebElement telephone;
 	
-	@FindBy(id="input-address-1")
+	@FindBy(id="input-payment-address-1")
 	private WebElement address1;
 	
-	@FindBy(id="input-city")
+	@FindBy(id="input-payment-city")
 	private WebElement city;
 	
-	@FindBy(id="input-postcode")
+	@FindBy(id="input-payment-postcode")
 	private WebElement postcode;
 	
-	@FindBy(name="country_id")
+	@FindBy(xpath=("//*[@name='country_id'] | //*[@id='input-payment-country']"))
 	private WebElement countryid;
 	
-	@FindBy(name="zone_id")
+	@FindBy(xpath=("//*[@name='zone_id'] | //*[@id='input-payment-zone']"))
 	private WebElement zoneid;
 	
-	@FindBy(id="input-password")
+	@FindBy(id="input-payment-password")
 	private WebElement inpassword;
 	
-	@FindBy(id="input-confirm")
+	@FindBy(id="input-payment-confirm")
 	private WebElement confirmpass;
 	
 	@FindBy(xpath="//*[@id=\"content\"]/form/fieldset[4]/div/div/label[2]/input")
@@ -62,7 +62,7 @@ public class uniformlogin {
 	private WebElement checkbox;
 	
 	@FindBy(xpath="//*[@id=\"content\"]/form/div/div/input[2]")
-	private WebElement continuebtn;
+	private WebElement continuebtn1;
 	
 	@FindBy(xpath="//*[@id=\"content\"]/div/div/a")
 	private WebElement continueacc;
@@ -103,6 +103,7 @@ public class uniformlogin {
 	public void sendcountryid(String countryid) {
 		this.countryid.sendKeys(countryid);}
 	public void sendzoneid(String zoneid) {
+		this.zoneid.isSelected();
 		this.zoneid.sendKeys(zoneid);}
 	public void sendinputpass(String inpass) {
 		this.inpassword.sendKeys(inpass);}
@@ -112,8 +113,8 @@ public class uniformlogin {
 		this.radiono.click();}
 	public void selectcheckbox() {
 		this.checkbox.click();}
-	public void clickcontinue() {
-		this.continuebtn.click();}
+	public void clickcontinue1() {
+		this.continuebtn1.click();}
 	public void clickcontinueacc() {
 		this.continueacc.click();
 	}
