@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class uniformlogin {
@@ -22,38 +23,38 @@ public class uniformlogin {
 	@FindBy(xpath="//*[@id=\"top-links1\"]/ul/li[3]/ul/li[1]/a")
 	private WebElement register;
 	
-	@FindBy(id="input-payment-firstname")
+	@FindBy(xpath="//*[@id='input-firstname'] | //*[@id='input-payment-firstname']")
 	private WebElement firstname;
 	
-	@FindBy(id="input-payment-lastname")
+	@FindBy(xpath="//*[@id='input-payment-lastname'] | //*[@id='input-lastname']")
 	private WebElement lastname;
 	
-	@FindBy(id="input-payment-email")
+	@FindBy(xpath="//*[@id='input-payment-email'] | //*[@id='input-email']")
 	private WebElement email;
 	
-	@FindBy(id="input-payment-telephone")
+	@FindBy(xpath="//*[@id='input-payment-telephone'] | //*[@id='input-telephone']")
 	private WebElement telephone;
 	
-	@FindBy(id="input-payment-address-1")
+	@FindBy(xpath="//*[@id='input-payment-address-1'] | //*[@id='input-address-1']")
 	private WebElement address1;
 	
-	@FindBy(id="input-payment-city")
+	@FindBy(xpath="//*[@id='input-payment-city'] | //*[@id='input-city']")
 	private WebElement city;
 	
-	@FindBy(id="input-payment-postcode")
+	@FindBy(xpath="//*[@id='input-payment-postcode'] | //*[@id='input-postcode']")
 	private WebElement postcode;
 	
-	@FindBy(xpath=("//*[@name='country_id'] | //*[@id='input-payment-country']"))
+	@FindBy(xpath="//*[@id='input-country'] | //*[@id='input-payment-country']")
 	private WebElement countryid;
 	
-	@FindBy(xpath=("//*[@name='zone_id'] | //*[@id='input-payment-zone']"))
+	@FindBy(xpath="//*[@id='input-zone'] | //*[@id='input-payment-zone']")
 	private WebElement zoneid;
 	
-	@FindBy(id="input-payment-password")
-	private WebElement inpassword;
+	@FindBy(xpath="//*[@id='input-payment-password'] | //*[@id='input-password']")
+	private WebElement inputpassword;
 	
-	@FindBy(id="input-payment-confirm")
-	private WebElement confirmpass;
+	@FindBy(xpath="//*[@id='input-payment-confirm'] | //*[@id='input-confirm']")
+	private WebElement confirmpassword;
 	
 	@FindBy(xpath="//*[@id=\"content\"]/form/fieldset[4]/div/div/label[2]/input")
 	private WebElement radiono;
@@ -76,12 +77,12 @@ public class uniformlogin {
 		
 	}
 	
-	public void sendfirstName(String fn) {
-		this.firstname.sendKeys(fn);
+	public void sendfirstname(String firstname) {
+		this.firstname.sendKeys(firstname);
 	}
 	
-	public void sendlastname(String ln) {
-		this.lastname.sendKeys(ln);
+	public void sendlastname(String lastname) {
+		this.lastname.sendKeys(lastname);
 	}
 	
 	public void sendemail(String email) {
@@ -100,15 +101,18 @@ public class uniformlogin {
 	public void sendpostcode(String postcode) {
 		this.postcode.sendKeys(postcode);
 			}
-	public void sendcountryid(String countryid) {
-		this.countryid.sendKeys(countryid);}
-	public void sendzoneid(String zoneid) {
+	public void sendcountryid() {
+		this.countryid.isSelected();
+		Select country = new Select(this.countryid);
+		country.selectByVisibleText("India");}
+	public void sendzoneid() {
 		this.zoneid.isSelected();
-		this.zoneid.sendKeys(zoneid);}
-	public void sendinputpass(String inpass) {
-		this.inpassword.sendKeys(inpass);}
-	public void sendconfirmpass(String confirmpass) {
-		this.confirmpass.sendKeys(confirmpass);}
+		Select zone = new Select(this.zoneid);
+		zone.selectByVisibleText("Karnataka");}
+	public void sendinputpassword(String inputpassword) {
+		this.inputpassword.sendKeys(inputpassword);}
+	public void sendconfirmpassword(String confirmpassword) {
+		this.confirmpassword.sendKeys(confirmpassword);}
 	public void selectradiono() {
 		this.radiono.click();}
 	public void selectcheckbox() {
@@ -118,6 +122,8 @@ public class uniformlogin {
 	public void clickcontinueacc() {
 		this.continueacc.click();
 	}
+
+	
 	   
 }
 

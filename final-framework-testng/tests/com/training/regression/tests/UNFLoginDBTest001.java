@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 import com.training.bean.LoginBean;
 import com.training.dao.ELearningDAO;
 import com.training.dataproviders.LoginDataProviders;
+import com.training.dataproviders.UFM001dataprovider;
 import com.training.generics.GenericMethods;
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
@@ -25,7 +26,7 @@ import com.training.utility.DriverNames;
 public class UNFLoginDBTest001 {
 	private WebDriver driver;
 	private String baseUrl;
-	private  UFM002 uniform;
+	private uniformlogin uniformpom;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	private GenericMethods genericMethods; 
@@ -41,7 +42,7 @@ public class UNFLoginDBTest001 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		uniform = new UFM002(driver);
+		uniformpom = new uniformlogin(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		genericMethods = new GenericMethods(driver); 
@@ -56,17 +57,30 @@ public class UNFLoginDBTest001 {
 	}
 
 
-	@Test(dataProvider = "db-inputs", dataProviderClass = LoginDataProviders.class)
-	public void loginDBTest(String userName, String password) {
+	@Test(dataProvider = "db-inputs", dataProviderClass = UFM001dataprovider.class)
+	public void loginDBTest(String firstname, String lastname, String email, String telephone, String address1, String city, String postcode, String countryid, String zoneid, String inputpassword, String confirmpassword) throws InterruptedException {
 		// for demonstration 
 //		genericMethods.getElement("login", "id"); 
-				
-		uniform.sendemail(userName);
+		Thread.sleep(1000);
+		uniformpom.clickmyaccount();
+		uniformpom.clickregister();
+		Thread.sleep(1000);
+		uniformpom.sendfirstname(firstname);
+		uniformpom.sendlastname(lastname);
+		uniformpom.sendemail(email);
+		uniformpom.sendtelephone(telephone);
+		uniformpom.sendaddress1(address1);
+		uniformpom.sendcity(city);
+		uniformpom.sendpostcode(postcode);
+		uniformpom.sendcountryid();
+		uniformpom.sendzoneid();
+		uniformpom.sendinputpassword(inputpassword);
+		uniformpom.sendconfirmpassword(confirmpassword);
+		uniformpom.selectradiono();
+		uniformpom.selectcheckbox();
+		uniformpom.clickcontinue1();
 		
-		uniform.sendpassword(password);
-		uniform.clickloginbtn();
-		
-		screenShot.captureScreenShot(userName);
+		//screenShot.captureScreenShot(userName);
 
 	}
 

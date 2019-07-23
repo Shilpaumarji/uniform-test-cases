@@ -24,8 +24,7 @@ public class uniform {
 	private uniformlogin uniformpom;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	JavascriptExecutor js = (JavascriptExecutor) driver;
-
+	
 	@BeforeClass
 	public void setUpBeforeClass() throws IOException {
 		properties = new Properties();
@@ -64,17 +63,18 @@ public class uniform {
 		Thread.sleep(1000);
 		uniformpom.clickmyaccount();
 		uniformpom.clickregister();
-		uniformpom.sendfirstName("rimaf");
-		uniformpom.sendlastname("f");
-		uniformpom.sendemail("rimaf12@gmail.com");
+		Thread.sleep(1000);
+		uniformpom.sendfirstname("rima");
+		uniformpom.sendlastname("h");
+		uniformpom.sendemail("rimah12@gmail.com");
 		uniformpom.sendtelephone("9441835892");
 		uniformpom.sendaddress1("Jayanagar");
 		uniformpom.sendcity("Bangalore");
 		uniformpom.sendpostcode("560082");
-		uniformpom.sendcountryid("India");
-		uniformpom.sendzoneid("Karnataka");
-		uniformpom.sendinputpass("rimaf123");
-		uniformpom.sendconfirmpass("rimaf123");
+		uniformpom.sendcountryid();
+		uniformpom.sendzoneid();
+		uniformpom.sendinputpassword("rimah123");
+		uniformpom.sendconfirmpassword("rimah123");
 	    uniformpom.selectradiono();
 		uniformpom.selectcheckbox();
 		uniformpom.clickcontinue1();

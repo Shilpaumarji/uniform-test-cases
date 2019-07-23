@@ -19,5 +19,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ShilpaUmarji/Desktop/shilpa/shilpa-backup/back ups/Shilpa_IBM/Selenium jars/selenium-server-standalone-3.141.59.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ShilpaUmarji/Desktop/shilpa/shilpa-backup/back ups/Shilpa_IBM/Selenium jars/testng-6.4-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TestNG"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

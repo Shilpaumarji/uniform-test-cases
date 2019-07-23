@@ -3,7 +3,7 @@
 
 <suite name = "Sample test Suite">
    <test name = "Sample test">
-      <classes>
+         <classes>
          <class name = "com.training.sanity.tests.LoginTests" />
       </classes>
    </test>

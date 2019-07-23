@@ -32,7 +32,7 @@ public class LoginDataProviders {
 	
 	@DataProvider(name = "excel-inputs")
 	public Object[][] getExcelData(){
-		String fileName ="C:\\Users\\IBM_ADMIN\\Desktop\\shilpa-backup\\Selenium jars\\TestdataUFM001.xlsx"; 
+		String fileName ="C:\\Users\\ShilpaUmarji\\git\\unfirom-test-cases-unf001-to-unf003\\final-framework-testng\\Testdata\\TestdataUNFTD-003.xlsx"; 
 		return new ApachePOIExcelRead().getExcelContent(fileName); 
 	}
 	

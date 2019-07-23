@@ -88,8 +88,8 @@ public class ApachePOIExcelRead {
 		return list1;
 	}
 
-	/*public static void main(String[] args) {
-		String fileName = "\"C:\\Users\\IBM_ADMIN\\Desktop\\shilpa-backup\\Selenium jars\\TestdataUFM001.xlsx\"";
+	public static void main(String[] args) {
+		String fileName = "C:\\Users\\ShilpaUmarji\\git\\unfirom-test-cases-unf001-to-unf003\\final-framework-testng\\Testdata\\TestdataUNFTD-003.xlsx";
 		
 		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName)){
 			for(String  tt : temp){
@@ -97,5 +97,5 @@ public class ApachePOIExcelRead {
 			
 		}
 
-	}*/
+	}
 }

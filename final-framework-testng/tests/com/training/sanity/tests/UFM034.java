@@ -13,15 +13,16 @@ import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
 import com.training.pom.UNF033;
+import com.training.pom.UNF034;
 import com.training.pom.uniformlogin;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class UFM033 {
+public class UFM034 {
 
 	public WebDriver driver;
 	private String baseUrl;
-	private UNF033 uniform;
+	private UNF034 uniform;
 	private uniformlogin registrationpage;
 	private static Properties properties;
 	private ScreenShot screenShot;
@@ -32,7 +33,7 @@ public class UFM033 {
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		uniform = new UNF033(driver);
+		uniform = new UNF034(driver);
 		registrationpage = new uniformlogin(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
@@ -53,6 +54,7 @@ public class UFM033 {
 		Thread.sleep(1000);
 		String expected = uniform.successalertmsg();
 				Assert.assertTrue(true, expected);
+			System.out.printf("Alert message");
 			System.out.println(expected);
 	}
 	//view and checkout
@@ -65,22 +67,20 @@ public class UFM033 {
         uniform.clickviewcart();
         uniform.verifymessage();
         uniform.clickcheckout();
+        uniform.guestcheckout();
         uniform.continubtn();
         String expected = "Your Personal Details";
         Assert.assertEquals(uniform.registerpage(), expected);
-        System.out.println(expected);}
-      
-
-   
-	@Test(priority=3)
+        System.out.printf("Registration Page displayed: ");
+        System.out.println(expected);
+    }
+    @Test(priority=3)
 	public void orderconfirmationpage() throws InterruptedException {
 	Thread.sleep(1000);
 	registrationpage.sendfirstname("Shilpa");
-	registrationpage.sendlastname("SI");
-	registrationpage.sendemail("Shilpasi123@gmail.com");
+	registrationpage.sendlastname("SK");
+	registrationpage.sendemail("shilpask123@gmail.com");
 	registrationpage.sendtelephone("9856789021");
-	registrationpage.sendinputpassword("Shilpasi123");
-	registrationpage.sendconfirmpassword("Shilpasi123");
 	registrationpage.sendaddress1("Jayanagar");
 	registrationpage.sendcity("Bangalore");
 	registrationpage.sendpostcode("560061");
@@ -88,21 +88,12 @@ public class UFM033 {
 	Thread.sleep(1000);
 	registrationpage.sendzoneid();
 	Thread.sleep(1000);
-	uniform.secondcheckbox();
-	Thread.sleep(1000);
-	uniform.agreecheckboxreg();
 	uniform.continueonregpage();
-	Thread.sleep(1000);
-	/*String expected = " Warning: E-Mail Address is already registered!";
-	String actualmsg = uniform.existingemailid();
-	Assert.assertFalse(false, " Warning: E-Mail Address is already registered!");
-	System.out.println(actualmsg);*/
-		}
+	Thread.sleep(1000);}
+			
 
     @Test(dependsOnMethods="orderconfirmationpage", alwaysRun=true, priority=4)
     public void deliverymethod() throws InterruptedException {
-    	uniform.existingaddradiobtn();
-    	uniform.clickcontinuebtn2();
     	Thread.sleep(1000);
     	uniform.freeshippingtitle();
     	uniform.freeshipradiobtn();
@@ -119,13 +110,10 @@ public class UFM033 {
     	uniform.confirmbutton();
     	Thread.sleep(1000);
     	String confirm = uniform.orderconfirmationpage();
-    	System.out.println(confirm);
-    	Thread.sleep(3000);}
-
-
-
+    	System.out.printf("Order confirmation: ", confirm);
+    	Thread.sleep(3000);
+    	String items = uniform.getcarttotalitems();
+    	System.out.printf("total items in cart : ");
+    	System.out.println(items);
+    	}
 }
-
-
-		
-
